@@ -80,3 +80,32 @@ user: admin
 pass: admin
 
 ================================= Voila!!! ==================================
+
+
+
+===================== To create a fully qualified domain name (FQDN) =================
+change to root user
+command: sudo su root
+Then type in password
+
+Then open the hosts file
+command: vi /etc/hosts
+
+Then add one line to the file having <the server id of the same server> <tab space> <hostname>
+Note that you can check the hostname using command 'hostname'
+If the hostnames are same for all the servers, you can permanently set the hostname using commands
+Command: hostnamectl set-hostname <new Host Name>
+
+e.g.of FQDN in a file can be: 
+192.168.1.11	AMBARI_KAFKA_2
+
+
+Note: To ping all servers based on FQDN, you need to map the FQDN of each server
+to the /etc/hosts file of each server with the respective ip.
+
+e.g. If there are 3 server, then each of the server's hosts file should have the 
+below entries
+
+192.168.1.11	AMBARI_KAFKA_2
+192.168.1.8	AMBARI_KAFKA_1
+192.168.1.4	AMBARI_SERVER
