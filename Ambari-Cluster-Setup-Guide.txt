@@ -1,0 +1,82 @@
+Installing Ambari Server (Hortonworks) on Linux (Ubuntu 16x, 64 bit)
+
+
+===================== STEP 1 =================================================
+Install Ambari bits. This also installs the default PostgreSQL Ambari Database
+
+Command: apt-get install ambari-server
+
+===================== STEP 2 =================================================
+Set up Ambari Server: 
+
+Command: ambari-server setup
+
+Respond to the setup prompt:
+1. If you have not temporarily disabled SELinux, you may get a warning. 
+Accept the default (y), and continue.
+
+2. By default, Ambari Server runs under root. Accept the default (n) at 
+the Customize user account for ambari-server daemon prompt, to proceed as root. 
+
+If you want to create a different user to run the Ambari Server, 
+or to assign a previously created user, select (y) at the 
+'Customize user account for ambari-server' daemon prompt, 
+then provide a user name.
+
+3. If you have not temporarily disabled iptables you may get a warning. 
+Enter y to continue.
+
+4. Select a JDK version to download. Enter 1 to download Oracle JDK 1.8. 
+Alternatively, you can choose to enter a Custom JDK. If you choose Custom JDK, 
+you must manually install the JDK on all hosts and specify the Java Home path.
+
+5. Accept the Oracle JDK license when prompted. You must accept this license to 
+download the necessary JDK from Oracle. The JDK is installed during the deploy 
+phase.
+
+6. Select (n) at Enter advanced database configuration to use the default, 
+embedded PostgreSQL database for Ambari. 
+The default PostgreSQL database name is ambari. 
+The default user name and password are ambari/bigdata. 
+Otherwise, to use an existing PostgreSQL, MySQL/MariaDB or Oracle database 
+with Ambari, select (y)
+
+If you are using an existing PostgreSQL, MySQL/MariaDB, or Oracle database 
+instance, use one of the following prompts:
+
+[Important]	Important
+You must prepare a non-default database instance, before running setup and entering advanced database configuration.
+
+[Important]	Important
+Using the Microsoft SQL Server or SQL Anywhere database options are not supported.
+
+To use an existing Oracle instance, and select your own database name, user name, and password for that database, enter 2.
+
+Select the database you want to use and provide any information requested at the prompts, including host name, port, Service Name or SID, user name, and password.
+
+To use an existing MySQL/MariaDB database, and select your own database name, user name, and password for that database, enter 3.
+
+Select the database you want to use and provide any information requested at the prompts, including host name, port, database name, user name, and password.
+
+To use an existing PostgreSQL database, and select your own database name, user name, and password for that database, enter 4.
+
+Select the database you want to use and provide any information requested at the prompts, including host name, port, database name, user name, and password.
+
+7. At Proceed with configuring remote database connection properties [y/n] choose y.
+
+8. Setup completes.
+
+=============================== STEP: 3 ====================================
+to start the Ambari Server, type the below command at the command prompt
+Command: ambari-server start
+
+To check the status of the Amabari Server, type
+Command: ambari-server status
+
+To login into Admin console, open web broweser and access the URL: 
+http://localhost:8080
+
+user: admin
+pass: admin
+
+================================= Voila!!! ==================================
